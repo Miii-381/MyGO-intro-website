@@ -1,0 +1,358 @@
+/* 背景 */
+.background{
+    width: 100%;
+    height: 100%;
+    background-color: #f0fcff;
+    background-image: url(../resources/img/img_bg.jpg);
+    background-size: cover;
+    position: fixed;
+    z-index: -1;
+    filter: blur(0);
+}
+/* header下面部分 */
+.header-next{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 800px;
+    background-color: transparent;
+}
+
+.header-next .info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 40%;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.95);
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out 0.8s forwards;
+}
+/* 下滑按钮 */
+#button_down{
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    color: #7f8182e8;
+    cursor: pointer;
+    animation: float 2s ease-in-out infinite;
+}
+/* content主体 */
+.content{
+    flex: 1;
+    width: 100%;
+    min-height: 100vh;
+    margin: 10px auto auto 0;
+    background-color:rgba(255,255,255,.7);
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    z-index: 1;
+}
+/* 动画信息 */
+.anime-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 900px;
+    background-color: rgba(255,255,255,.3);
+    text-align: left;
+}
+
+.anime-info-card{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 80%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.anime-info-text{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffffda;
+    background-image: url();
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+    opacity: 0;
+    transform: translateY(100%);
+    cursor: inherit;
+}
+.animate-in{
+    animation: flyInFromDown 1.5s ease-in-out forwards;
+}
+.animate-out{
+    animation: flyInFromUp 1.5s ease-in-out forwards;
+}
+
+.anime-info-text .text{
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 60%;
+    cursor: inherit;
+}
+
+#mygo_kv{
+    height: 100%;
+    cursor: inherit;
+}
+
+/* 角色信息 */
+.character-info{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    width: 100%;
+    background-color: #3387bbc1;
+}
+
+.character-info-title1{
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100px;
+    text-shadow: 2px 2px 3px rgba(0,0,0,.1);
+    font-family: 'NSimSun', 'Microsoft YaHei', '微软雅黑', 'SimSun', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: #46DAFF;
+    color: #F0FCFF;
+    letter-spacing: .35em;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+}
+
+.character-info-title1 p{
+    margin: 10px;
+}
+
+.character-info-title1 hr{
+    width: 12%;
+    border: 1.5px solid #2e9eba;
+}
+
+.character-card{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 90%;
+    background-color: #f0fcff;
+    padding: 50px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+}
+
+div[class^="character-card-"] { 
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    position: relative;
+    padding: 0;
+    width: 258px;
+    height: 400px;
+    margin: 10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.1);
+    overflow: hidden;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+div[class^="character-card-"] .character-pic{
+    height: 100%;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+div[class^="character-card-"] .character-pic:hover{
+    transform: scale(1.1);
+}
+
+.character-name{
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    font-size: 22px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,.1);
+    width: 140px;
+    height: 35px;
+    background-color: #133f59;
+    color: #FFF;
+    letter-spacing: .06em;
+    font-weight: 500;
+    bottom: 30px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+    pointer-events: none;
+}
+
+.character-name span{
+    font-size: 14px; 
+    margin-left: 5px; 
+    vertical-align: baseline;
+}
+
+.character-card > [class^="character-card-"] .close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.character-card > [class^="character-card-"].active .close-btn {
+    opacity: 1;
+}
+
+.animate-card-in{
+    animation: cardIn 1s ease-in-out forwards;
+}
+
+.animate-card-out{
+    animation: cardOut 1s ease-in-out forwards;
+}
+
+.character-describe{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    color: gray;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.character-describe.active{
+    opacity: 1;
+}
+
+.character-describe-text{
+    height: 75%;
+    width: 80%;
+    font-size: 17px;
+    font-weight: 500;
+    overflow-y: auto;
+}
+
+.character-card ul,li{
+    list-style: disc;
+}
+
+.character-card #hidden{
+    background-color: #3387bb;
+    color: transparent;
+    text-shadow: none;
+    transition: all 0.5s ease;
+}
+
+.character-card #hidden:hover{
+    background-color: transparent;
+    color: gray;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes float{
+    0%, 100% {
+        transform: translate(-50%, 0);
+        filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+    }
+    50% {
+        transform: translate(-50%, -10px);
+        filter: drop-shadow(0 15px 8px rgba(0,0,0,0.2));
+    }
+}
+
+@keyframes flyInFromDown {
+    0%{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes flyInFromUp {
+    0%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes cardIn {
+    0%{
+        width: 258px;
+        height: 400px;
+        margin: 10px;
+    }
+    100%{
+        width: 80%;
+        height: 500px;
+        margin: 20px, 10px;
+    }
+}
+
+@keyframes cardOut {
+    0%{
+        width: 80%;
+        height: 500px;
+        margin: 20px, 10px;
+    }
+    100%{
+        width: 258px;
+        height: 400px;
+        margin: 10px;
+    }
+}

@@ -1,0 +1,292 @@
+/* 背景 */
+.background{
+    width: 100%;
+    height: 100%;
+    background-color: #f0fcff;
+    background-image: url(../resources/img/img_bg.jpg);
+    background-size: cover;
+    position: fixed;
+    z-index: -1;
+    filter: blur(0);
+}
+
+.placeholder{
+    width: 100%;
+    height: 15vh;
+    background-color:rgba(255,255,255,.7);
+    background-color: transparent;
+}
+
+/* content主体 */
+.content{
+    flex: 1;
+    width: 100%;
+    background-color:rgba(255,255,255,.7);
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    z-index: 1;
+}
+
+/* 角色信息 */
+.character-info{ 
+    padding-top: 30px;
+    width: 100%;
+    background-color: #f0fcff;
+}
+
+.character-info-title1{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100px;
+    text-shadow: 2px 2px 3px rgba(0,0,0,.1);
+    font-family: 'NSimSun', 'Microsoft YaHei', '微软雅黑', 'SimSun', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: #46DAFF;
+    color: #F0FCFF;
+    letter-spacing: .35em;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+}
+
+.character-info-title1 p{
+    margin: 10px;
+}
+
+.character-info-title1 hr{
+    width: 12%;
+    border: 1.5px solid #2e9eba;
+}
+
+.character-card{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 90%;
+    background-color: #f0fcff;
+    padding: 50px;
+}
+
+div[class^="character-card-"] { 
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 0;
+    width: 322px;
+    height: 500px;
+    margin: 10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.1);
+    overflow: hidden;
+    border-radius: 5px;
+    z-index: 1;
+    background-color: #FFFFFF;
+}
+
+div[class^="character-card-"] .character-pic{
+    height: 100%;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+div[class^="character-card-"] .character-pic:hover{
+    transform: scale(1.1);
+}
+
+.character-name{
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    font-size: 22px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,.1);
+    width: 140px;
+    height: 35px;
+    background-color: #133f59;
+    color: #FFF;
+    letter-spacing: .06em;
+    font-weight: 500;
+    bottom: 30px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+    pointer-events: none;
+}
+
+.character-name span{
+    font-size: 14px; 
+    margin-left: 5px; 
+    vertical-align: baseline;
+}
+
+.character-card > [class^="character-card-"] .close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.character-card > [class^="character-card-"].active .close-btn {
+    opacity: 1;
+}
+
+.animate-card-in{
+    animation: cardIn 1s ease-in-out forwards;
+}
+
+.animate-card-out{
+    animation: cardOut 1s ease-in-out forwards;
+}
+
+.character-describe{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    color: gray;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    line-height: 1.5;
+}
+
+.character-describe::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: url(../resources/img/MyGO_icon.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    opacity: 0.2;
+}
+
+.character-describe.active{
+    opacity: 1;
+}
+
+.character-describe-text{
+    height: 75%;
+    width: 80%;
+    font-size: 20px;
+    font-weight: 500;
+    overflow-y: auto;
+    z-index: 2;
+}
+
+.character-card ul,li{
+    list-style: disc;
+}
+
+.character-card #hidden{
+    background-color: #3387bb;
+    color: transparent;
+    text-shadow: none;
+    transition: all 0.5s ease;
+}
+
+.character-card #hidden:hover{
+    background-color: transparent;
+    color: gray;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+}
+
+.character-card a{
+    font-size: 25px;
+    color: #519FD0;
+}
+
+.character-card a:hover{
+    color: #3387bb;
+}
+
+.character-card a:active{
+    color: #296D97;
+}
+
+.animate-other-card-in{
+    animation: otherCardIn 1s ease-in-out forwards;
+}
+
+.animate-other-card-out{
+    animation: otherCardOut 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes cardIn {
+    0%{
+        height: 500px;
+        margin: 10px;
+    }
+    100%{
+        width: 80%;
+        height: 650px;
+        margin: 20px 10px;
+    }
+}
+
+@keyframes cardOut {
+    0%{
+        width: 80%;
+        height: 650px;
+        margin: 20px, 10px;
+    }
+    100%{
+        height: 500px;
+        margin: 10px;
+    }
+}
+
+@keyframes otherCardOut {
+    0%{
+        width: 322px;
+        opacity: 1;
+        margin: 10px;
+    }
+    100%{
+        width: 0;
+        opacity: 0;
+        margin: 0;
+    }
+}
+
+@keyframes otherCardIn {
+    0%{
+        width: 0;
+        opacity: 0;
+        margin: 0;
+    }
+    100%{
+        width: 322px;
+        opacity: 1;
+        margin: 10px;
+    }
+}

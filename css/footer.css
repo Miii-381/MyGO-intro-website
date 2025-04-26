@@ -1,0 +1,26 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    margin-top: auto;
+    background-color: #BFF2FF;
+    z-index: -1;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,.1);
+}
+
+.footer .mygo-logo{
+    height: 60%;
+    width: auto;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+}
+.footer .footer-text{
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    text-shadow: 1px 1px 2px rgba(85, 85, 85, 0.1);
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 2px solid rgb(109, 109, 109);
+}

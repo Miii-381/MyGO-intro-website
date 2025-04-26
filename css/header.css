@@ -1,0 +1,124 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 90%;
+    height: 80px;
+    margin: 30px 0;
+    border-radius: 10px 10px;
+    background-color: rgba(255,255,255,.8);
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    position: fixed;
+    left: 50%; 
+    transform: translateX(-50%);
+    transition: all 1s ease !important;
+    z-index: 999;
+    
+}
+
+.header *{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.header.fixed {
+    left: 0;
+    transform: translateX(0);
+    width: 100%; /* 宽度变为 100% */
+    margin-top: 0;
+    border-radius: 0; /* 移除圆角 */
+}
+
+.header-left{
+    height: 80px;
+}
+
+.header-left-img{
+    height: 50px;
+    width: 50px;
+    margin: 10px 20px 10px 40px;
+    line-height: 60px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: url(../resources/img/huaji.png);
+    background-size: contain;
+    background-position: center;
+    transition: 0.2s;
+}
+
+.header-left-img:hover {
+    box-shadow: inset 0 0 10px #86880082;
+}
+
+.header-left-title{
+    width: 140px;
+    height: 60px;
+    color: #0b88bb;
+    margin-left: 5px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bolder;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.header-left-title:hover{
+    background-color: #e7f3f8;
+}
+
+.header-left-title:hover span{
+    animation: bounce 0.5s cubic-bezier(0.25, 0.10, 0.25, 1.00);
+}
+
+.header-left-title:active{
+    background-color: #badff0;
+}
+
+.header-right{
+    height: 80px;
+}
+
+.header-right-ul{
+    height: 80px;
+    margin-right: 50px;
+}
+
+.header-right-ul li{
+    box-sizing: border-box;
+    position: relative;
+    padding: 5px 5px;
+    margin: 20px 5px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.header-right-ul li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 0;
+    height: 2px;
+    background-color: #0b88bb;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.header-right-ul li:hover::after {
+    width: 80%;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
