@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(img);
         
         // 更新容器高度
-        container.style.height = `${Math.max(...columnHeights) - rowGap}px`;
+        container.style.height = `${Math.max(...columnHeights) - rowGap + 50}px`;
     }
 
     // 异步加载图片
