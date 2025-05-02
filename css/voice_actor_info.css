@@ -290,32 +290,40 @@ body{
     opacity: 1;
 }
 
-.representative_chara{
+.representative-chara *{
+    transition: all 0.3s ease;
+}
+
+.representative-chara .chara-trigger {
     position: relative;
-    width: 300px;
+    display: inline-block;
 }
 
-.representative_chara:hover{
-    color: rgb(62, 62, 62);
-}
-
-.representative_chara>ul{
+.representative-chara ul {
     visibility: hidden;
     opacity: 0;
-    transition: all 0.5s ease;
     position: absolute;
-    z-index: 9999;
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
-    border: 10px solid #FFF;
+    top: 100%;
+    left: 0;
     background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 5px;
+    z-index: 10;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 6px;
     font-size: 17px;
-    color: var(--youchan-font-color);
 }
 
-.representative_chara:hover>ul{
+.representative-chara .chara-trigger p:hover + ul,
+.representative-chara .chara-trigger ul:hover {
     visibility: visible;
     opacity: 1;
+}
+
+.representative-chara .chara-trigger p:hover {
+    color: rgb(50, 50, 50);
 }
 
 .actor-card-youchan {
