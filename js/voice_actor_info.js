@@ -54,7 +54,7 @@ function positionChange(cards) {
             });
         }
         card.style.left = 5 + index * 2.5 + '%';
-        card.style.top = 16 - index * 2.5 + '%';
+        card.style.top = 10 - index * 2.5 + '%';
         card.style.zIndex = cards.length - index;
     });
 }
