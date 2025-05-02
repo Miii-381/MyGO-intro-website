@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function playAudio() {
         if (audio) {
             audio.volume = 0.3;
+            audio.style.display = 'block';
             video && (video.style.display = 'none');
             audio.play().catch(err => {
                 console.error("Audio playback failed", err);
