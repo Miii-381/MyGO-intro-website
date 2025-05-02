@@ -1,3 +1,18 @@
+:root {
+    --youchan-font-color: rgb(104, 104, 104);
+    --hinapiyo-font-color: rgb(89, 89, 89);
+    --mikan-font-color: rgb(107, 107, 107);
+    --rin-font-color: rgb(97, 97, 97);
+    --coco-font-color: rgb(55, 55, 55);
+
+    --youchan-bg-color: rgba(119, 187, 221, 1);
+    --hinapiyo-bg-color: rgba(119, 221, 119, 1);
+    --mikan-bg-color: rgba(255, 221, 136, 1);
+    --rin-bg-color: rgba(255, 136, 154, 1);
+    --coco-bg-color: rgba(119, 119, 170, 1);
+}
+
+
 body{
     width: 100%;
     height: 100%;
@@ -88,7 +103,7 @@ body{
 
 .actor-card{
     width: 85%;
-    height: 85%;
+    height: 90%;
     position: absolute;
     left: 0;
     top: 0;
@@ -102,6 +117,7 @@ body{
     padding: 20px;
     opacity: 1;
     transition: all 0.5s ease;
+    transform: translateZ(5deg)
 }
 
 .actor-card:hover{
@@ -120,6 +136,7 @@ body{
     transform: perspective(20px) rotatex(5deg);
     box-shadow: 5px 0 20px -5px rgba(0,0,0,.1);
 }
+
 .actor-card::after{
     content: "";
     position: absolute;
@@ -128,9 +145,10 @@ body{
     background: url(../resources/img/MyGO_icon.png) no-repeat center right 15% / 45%;
     z-index: 5;
     opacity: 0.2;
+    pointer-events: none;
 }
 
-.actor-card img{
+.actor-card .actor-img{
     height: 100%;
     display: flex;
     justify-content: center;
@@ -144,27 +162,265 @@ body{
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 3em;
+    font-size: 17px;
+    text-shadow: 1px 1px 4px rgba(255,255,255,.2);
+    font-weight: 500;
+    position: relative;
+    z-index: 999;
+}
+
+.actor-card-info hr{
+    display: block;
+}
+
+.actor-card-info .hidden{
+    background-color: inherit;
+    color: transparent;
+    text-shadow: none;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+.actor-card-info .hidden:hover{
+    background-color: transparent;
+    color: rgb(104, 104, 104);
+    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+    box-shadow: none;
+}
+
+.actor-card-info .hidden:hover{
+    background-color: transparent;
+    color: rgb(50, 50, 50);
+    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+    box-shadow: none;
+}
+
+.actor-card-info .name{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 25px;
+    transition: all 0.2s ease;
+    width: 300px;
+}
+
+.actor-card-info ruby{
+    font-size: 55px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.actor-card-info .romaji{
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.actor-card-info .personal-info{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    float: right;
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    width: 220px;
+    background-color: rgba(255, 255, 255, 0.65);
+    padding: 10px 15px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+}
+
+.actor-card-info .quotation{
+    background-color: #f0fcff;
+    margin-top: 20px;
+    padding: 10px 15px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #77bbdd;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+}
+
+.list{
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.tips{
+    position: relative;
+}
+
+.tip-img{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
     align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+    border: 10px solid #FFF;
+    background-color: #fff;
+}
+
+.tip-img>img{
+    width: 150px;
+    margin: 0 2px;
+    border-radius: 5px;
+}
+
+.hidden:hover>.tip-img, .tips:hover>.tip-img {
+    visibility: visible;
+    opacity: 1;
+}
+
+.representative_chara{
+    position: relative;
+    width: 300px;
+}
+
+.representative_chara:hover{
+    color: rgb(62, 62, 62);
+}
+
+.representative_chara>ul{
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    position: absolute;
+    z-index: 9999;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+    border: 10px solid #FFF;
+    background-color: #fff;
+    font-size: 17px;
+    color: var(--youchan-font-color);
+}
+
+.representative_chara:hover>ul{
+    visibility: visible;
+    opacity: 1;
 }
 
 .actor-card-youchan {
-    background-color: rgba(119, 187, 221, 1);
+    background-color: var(--youchan-bg-color);
+    color: var(--youchan-font-color);
 }
 
 .actor-card-hinapiyo {
-    background-color: rgba(119, 221, 119, 1);
+    background-color: var(--hinapiyo-bg-color);
+    color: var(--hinapiyo-font-color);
 }
 
 .actor-card-mikan {
-    background-color: rgba(255, 221, 136, 1);
+    background-color: var(--mikan-bg-color);
+    color: var(--mikan-font-color);
 }
 
 .actor-card-rin {
-    background-color: rgba(255, 136, 154, 1);
+    background-color: var(--rin-bg-color);
+    color: var(--rin-font-color);
 }
 
 .actor-card-coco {
-    background-color: rgba(119, 119, 170, 1);
+    background-color: var(--coco-bg-color);
+    color: var(--coco-font-color);
+}
+
+.actor-card-youchan .hidden:hover{
+    color: var(--youchan-font-color);
+    
+}
+
+.actor-card-info #youchan-name:hover{
+    color: #338ac0
+}
+
+.actor-card-info #youchan-name:active{
+    color: #296D97;
+}
+
+.actor-card-info #youchan-quotation {
+    color: #77bbdd;
+}
+
+
+.actor-card-hinapiyo .hidden:hover{
+    color: var(--hinapiyo-font-color)
+}
+
+.actor-card-info #hinapiyo-name:hover{
+    color: rgb(82, 159, 82);
+}
+
+.actor-card-info #hinapiyo-name:active{
+    color: rgb(51, 96, 51);
+}
+
+.actor-card-info #hinapiyo-quotation {
+    color: #7d7
+}
+
+.actor-card-mikan .hidden:hover{
+    color: var(--mikan-font-color)
+}
+
+.actor-card-info #mikan-name:hover{
+    color: rgb(199, 173, 107)
+}
+
+.actor-card-info #mikan-name:active{
+    color: rgb(113, 99, 61)
+}
+
+.actor-card-info #mikan-quotation {
+    color: #FD8
+}
+
+.actor-card-rin .hidden:hover{
+    color: var(--rin-font-color)
+}
+
+.actor-card-info #rin-name:hover{
+    color: rgb(146, 79, 89)
+}
+
+.actor-card-info #rin-name:active{
+    color: rgb(81, 43, 49)
+}
+
+.actor-card-info #rin-quotation {
+    color: #f89
+}
+
+.actor-card-coco .hidden:hover{
+    color: var(--coco-font-color)
+}
+
+.actor-card-info #coco-name:hover{
+    color: rgb(87, 87, 122)
+}
+
+.actor-card-info #coco-name:active{
+    color: rgb(46, 46, 65)
+}
+
+.actor-card-info #coco-quotation {
+    color: #77A
 }

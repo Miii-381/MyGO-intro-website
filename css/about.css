@@ -1,0 +1,252 @@
+:root{
+    --about-font-color: rgb(74, 74, 74);
+}
+
+/* 背景 */
+.background{
+    width: 100%;
+    height: 100%;
+    background-color: #f0fcff;
+    background-image: url(../resources/img/img_bg.jpg);
+    background-size: cover;
+    position: fixed;
+    z-index: -1;
+    filter: blur(0);
+}
+
+.placeholder{
+    width: 100%;
+    height: 15vh;
+    background-color:rgba(255,255,255,.7);
+    background-color: transparent;
+}
+
+/* content主体 */
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color:rgba(255,255,255,.7);
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    z-index: 1;
+    margin-top: 20vh;
+    color: var(--about-font-color);
+}
+
+.about{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 90%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.about-bg-img{
+    position: absolute;
+    width: 100%;
+}
+
+.about-bg-video{
+    position: absolute;
+    width: 100%;
+}
+
+.about-bg-audio{
+    position: absolute;
+    left: 50%;
+    bottom: 3%;
+    transform: translateX(-50%);
+}
+
+.about-card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    height: 70%;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 20px;
+    opacity: 1;
+    padding: 20px;
+}
+
+#about-meme{
+    height: 40%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.1);
+    transition: all 1s ease;
+}
+
+#about-meme:hover{
+    animation: aboutMemeSwing 2s ease infinite;
+}
+
+.down-button{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 50px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    opacity: 0;
+    z-index: 9999;
+    background-color: #ffffff2f;
+    cursor: default;
+    border-radius: 0 0 5px 5px;
+}
+
+.down-button>img{
+    transition: all 0.5s ease;
+    height: 40px;
+}
+
+.down-button:hover{
+    background-color: #ffffffa3;
+}
+
+.down-button:hover>img{
+    transform: scale(1.1);
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 22px;
+    text-shadow:
+        1px  1px 0 #7BF,
+       -1px  1px 0 #7BF,
+        1px -1px 0 #7BF,
+       -1px -1px 0 #7BF;
+    z-index: 9999;
+    margin-left: 20px;
+}
+
+.card-out{
+    animation: CardOut 1s ease forwards;
+}
+
+.card-in{
+    animation: CardIn 1s ease forwards;
+}
+
+.down-button-out{
+    animation: downButtonOut 1s ease forwards;
+}
+
+.down-button-in{
+    animation: downButtonIn 1s ease forwards;
+}
+
+#close-btn{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 1%;
+    top: 1%;
+    cursor: pointer;
+}
+
+.text>.title{
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.text-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 2;
+}
+
+.hidden{
+    background-color: inherit;
+    color: transparent;
+    text-shadow: none;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+.hidden:hover{
+    background-color: transparent;
+    color: var(--about-font-color);
+    text-shadow:
+        1px  1px 0 #7BF,
+       -1px  1px 0 #7BF,
+        1px -1px 0 #7BF,
+       -1px -1px 0 #7BF;
+    box-shadow: none;
+}
+
+@keyframes CardOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes CardIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes downButtonOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes downButtonIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes aboutMemeSwing {
+    0%   { transform: translate(0px, 0px) rotate(0deg); }
+    10%  { transform: translate(-20px, 10px) rotate(-20deg); }
+    20%  { transform: translate(30px, 20px) rotate(30deg); }
+    30%  { transform: translate(-10px, -20px) rotate(-10deg); }
+    40%  { transform: translate(20px, 10px) rotate(20deg); }
+    50%  { transform: translate(-30px, -10px) rotate(-30deg); }
+    60%  { transform: translate(10px, 20px) rotate(10deg); }
+    70%  { transform: translate(-20px, -20px) rotate(-20deg); }
+    80%  { transform: translate(30px, 10px) rotate(30deg); }
+    90%  { transform: translate(-10px, -10px) rotate(-10deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+}

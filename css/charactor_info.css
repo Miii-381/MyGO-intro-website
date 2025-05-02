@@ -198,14 +198,14 @@ div[class^="character-card-"] .character-pic:hover{
     list-style: disc;
 }
 
-.character-card #hidden{
+.character-card .hidden{
     background-color: #3387bb;
     color: transparent;
     text-shadow: none;
     transition: all 0.5s ease;
 }
 
-.character-card #hidden:hover{
+.character-card .hidden:hover{
     background-color: transparent;
     color: gray;
     text-shadow: 1px 1px 2px rgba(0,0,0,.1);
