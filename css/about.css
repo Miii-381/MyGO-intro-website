@@ -2,21 +2,9 @@
     --about-font-color: rgb(74, 74, 74);
 }
 
-/* 背景 */
-.background{
-    width: 100%;
-    height: 100%;
-    background-color: #f0fcff;
-    background-image: url(../resources/img/img_bg.jpg);
-    background-size: cover;
-    position: fixed;
-    z-index: -1;
-    filter: blur(0);
-}
-
 .placeholder{
     width: 100%;
-    height: 15vh;
+    height: 200px;
     background-color:rgba(255,255,255,.7);
     background-color: transparent;
 }
@@ -28,12 +16,12 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    height: 1000px;
     background-color:rgba(255,255,255,.7);
     box-shadow: 0 0 10px rgba(0,0,0,.1);
     z-index: 1;
-    margin-top: 20vh;
     color: var(--about-font-color);
+    padding-top: 200px;
 }
 
 .about{
@@ -173,6 +161,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-content: center;
     justify-content: center;
     line-height: 2;
 }

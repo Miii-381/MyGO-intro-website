@@ -12,24 +12,6 @@
     --coco-bg-color: rgba(119, 119, 170, 1);
 }
 
-
-body{
-    width: 100%;
-    height: 100%;
-}
-
-.background{
-    width: 100%;
-    height: 100%;
-    /* background-color: #f0fcff; */
-    background-image: url(../resources/img/MyGO_CV.jpg);
-    position: absolute;
-    z-index: -1;
-    background-size: cover;
-    background-position: center;
-    position: fixed;
-}
-
 .page-title{
     display: flex;
     justify-content: center;
@@ -69,7 +51,7 @@ body{
     flex-wrap: wrap;
     flex-direction: column;
     width: 100%;
-    min-height: 100vh;
+    min-height: 1000px;
     /* background-color: #f0fcff; */
     padding: 30px 0 30px 0;
     overflow: hidden;
@@ -102,7 +84,7 @@ body{
 }
 
 .actor-card{
-    width: 85%;
+    width: 90%;
     height: 90%;
     position: absolute;
     left: 0;

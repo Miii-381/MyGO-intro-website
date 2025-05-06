@@ -1,19 +1,3 @@
-body{
-    width: 100%;
-    height: 100%;
-}
-
-.background{
-    width: 100%;
-    height: 100%;
-    background-color: #f0fcff;
-    background-image: url(../resources/img/summary_bg.jpg);
-    position: absolute;
-    z-index: -1;
-    /* filter: blur(2px); */
-    background-size: cover;
-}
-
 .page-title{
     display: flex;
     justify-content: center;
@@ -52,8 +36,8 @@ body{
     flex-wrap: wrap;
     flex-direction: column;
     width: 100%;
-    min-height: 100vh;
-    background-color: #f0fcff;
+    min-height: 1000px;
+    background-color: #f0fcffc8;
     overflow: hidden;
     padding: 30px 0;
 }
@@ -66,7 +50,7 @@ body{
     width: 70%;
     height: 400px;
     margin-top: 30px;
-    background-color: #4ac2f5ec;
+    background-color: #4ac2f5;
     border-radius: 10px;
     opacity: 0;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -157,7 +141,7 @@ body{
 .episode-describe{
     font-size: 17px;
     width: 500px;
-    padding: 10px;
+    padding: 20px;
     height: 350px;
     color: rgb(255, 255, 255);
     line-height: 1.5;
@@ -186,7 +170,7 @@ body{
     text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     font-size: 20px;
     background-color:#FFF;
-    padding: 3px 3px;
+    padding: 3px 15px;
     margin: 7px; 
     box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     display: inline-block;

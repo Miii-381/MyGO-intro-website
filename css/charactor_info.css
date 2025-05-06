@@ -1,18 +1,6 @@
-/* 背景 */
-.background{
-    width: 100%;
-    height: 100%;
-    background-color: #f0fcff;
-    background-image: url(../resources/img/img_bg.jpg);
-    background-size: cover;
-    position: fixed;
-    z-index: -1;
-    filter: blur(0);
-}
-
 .placeholder{
     width: 100%;
-    height: 15vh;
+    height: 200px;
     background-color:rgba(255,255,255,.7);
     background-color: transparent;
 }
@@ -21,6 +9,7 @@
 .content{
     flex: 1;
     width: 100%;
+    min-height: 100px;
     background-color:rgba(255,255,255,.7);
     box-shadow: 0 0 10px rgba(0,0,0,.1);
     z-index: 1;
