@@ -14,10 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             video.play().catch(err => {
-                if(err !=  "NotAllowedError: play() failed because the user didn't interact with the document first."){
-                    console.error("Video playback failed", err);
-                    playAudio(); // 视频播放失败，尝试播放音频
-                }
+                console.error("Video playback failed", err);
+                playAudio(); // 视频播放失败，尝试播放音频
             });
         } else {
             playAudio(); // 视频元素不存在，播放音频
@@ -37,8 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 页面加载时开始尝试播放视频
-    playVideo();
+    window.addEventListener('scroll', playVideo);
 
     const closeBtn = document.getElementById('close-btn');
     const card = document.querySelector('.about-card');
