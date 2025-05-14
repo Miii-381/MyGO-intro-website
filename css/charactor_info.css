@@ -106,6 +106,9 @@ div[class^="character-card-"] .character-pic:hover{
     bottom: 30px;
     box-shadow: 2px 2px 5px rgba(0,0,0,.1);
     pointer-events: none;
+    transform-origin: left center;
+    transform: scale(1);
+    transition: all 1s ease;
 }
 
 .character-name span{

@@ -6,12 +6,32 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentActiveCard = null;
     // 获取所有卡片（如 .character-card-1, .character-card-2 等）
     const cards = document.querySelectorAll('.character-card > [class^="character-card-"]');
+    // 定义打开卡片的函数
+    function openCard(cardToOpen) {
+        const describe = cardToOpen.querySelector('.character-describe');
+        const name = cardToOpen.querySelector('.character-name');
+        // 展开当前卡片
+        cardToOpen.classList.add('animate-card-in', 'active');
+        cardToOpen.classList.remove('animate-card-out');
+        name.style.transform = 'scale(1.4)';
+        name.style.bottom = '70px';
+        describe.style.opacity = 1;
+        currentActiveCard = cardToOpen;
+        
+        cards.forEach(otherCard => {
+            if (otherCard !== currentActiveCard) {
+                otherCard.classList.add('animate-other-card-out');
+                otherCard.classList.remove('animate-other-card-in');
+            }
+        });
+    }
     // 定义关闭卡片的函数
     function closeCard(cardToClose) {
-
+        const name = cardToClose.querySelector('.character-name');
         cardToClose.classList.add('animate-card-out');
         cardToClose.classList.remove('animate-card-in');
-
+        name.style.transform = 'scale(1)';
+        name.style.bottom = '30px';
         cards.forEach(otherCard => {
             if (currentActiveCard && otherCard !== currentActiveCard) {
                 otherCard.classList.add('animate-other-card-in');
@@ -34,30 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 遍历卡片，设置点击事件
     cards.forEach(card => {
         const closeBtn = card.querySelector('.close-btn');
-        const describe = card.querySelector('.character-describe');
-
+        
         // 点击卡片事件处理函数
-        card.addEventListener('click', () => {
-            // 展开当前卡片
-            card.classList.add('animate-card-in', 'active');
-            card.classList.remove('animate-card-out');
-            setTimeout(() =>{
-                describe.style.opacity = 1;
-            }, 200);
-            currentActiveCard = card;
-
-            cards.forEach(otherCard => {
-                if (otherCard !== currentActiveCard) {
-                    otherCard.classList.add('animate-other-card-out');
-                    otherCard.classList.remove('animate-other-card-in');
-                }
-            })
-        });
+        card.addEventListener('click', () => openCard(card));
 
         // 点击关闭按钮事件处理函数
         closeBtn.addEventListener('click', (e) => {
             if (currentActiveCard === card) {
-                describe.style.opacity = 0;
                 closeCard(card);
             }
             // 阻止关闭按钮的点击事件冒泡到上层的卡片点击事件中
