@@ -1,22 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const video = document.getElementById('bg-video');
+    /* 视频/音频设置 */
+    const video = document.querySelector('.about-bg-video');
     const audio = document.querySelector('.about-bg-audio');
 
     function playVideo() {
         if (video) {
-            video.volume = 0.3;
+            video.volume = 0.2;
             audio.style.display = 'none';
 
             // 监听视频加载错误
             video.addEventListener('error', () => {
-                console.warn("Video load failed, fallback to audio.");
+                console.warn("Video play failed, fallback to audio.");
                 playAudio();
             });
 
-            video.play().catch(err => {
-                console.error("Video playback failed", err);
-                playAudio(); // 视频播放失败，尝试播放音频
-            });
+            video.play();
+
         } else {
             playAudio(); // 视频元素不存在，播放音频
         }
@@ -24,18 +23,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function playAudio() {
         if (audio) {
-            audio.volume = 0.3;
+            audio.volume = 0.2;
             audio.style.display = 'block';
             video.style.display = 'none';
-            audio.play().catch(err => {
-                console.error("Audio playback failed", err);
+            audio.addEventListener('error', () => {
+                console.warn("Audio play failed.");
             });
+            audio.play(); // 本来是想让屏幕滚动控制播放的，结果.play()强制用户进行交互才可以执行，否则报错，只好点击content区域进行播放了
+
         } else {
             console.log('No video or audio element found.');
         }
     }
 
-    window.addEventListener('scroll', playVideo);
+    const content = document.querySelector('.content');
+    content.addEventListener('click', playVideo);
 
     const closeBtn = document.getElementById('close-btn');
     const card = document.querySelector('.about-card');
