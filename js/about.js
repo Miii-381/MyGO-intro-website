@@ -1,49 +1,70 @@
-document.addEventListener('DOMContentLoaded', function() {
-    /* 视频/音频设置 */
-    const video = document.querySelector('.about-bg-video');
-    const audio = document.querySelector('.about-bg-audio');
+document.addEventListener('DOMContentLoaded', function () {
+    /*  背景视频/音频加载 */
+    const about_bg_img = document.querySelector('.about-bg-img');
+    const about_bg_video = '<video class="about-bg-video" id="bg-video" src="./resources/mayoiuta.mp4" controls loop preload="auto"></video>'
+    const about_bg_audio = '<audio class="about-bg-audio" id="bg-audio" src="./resources/mayoiuta.mp3" controls loop preload="auto"></audio>'
+    let video = null;
+    let audio = null;
 
-    function playVideo() {
-        if (video) {
+    async function checkFileExists(url) {
+        try {
+            const res = await fetch(url, { method: 'HEAD' });
+            return res.ok; 
+        } catch (error) {
+            console.error('检查文件失败:文件不存在或无法访问', error);
+            return false;
+        }
+    }
+
+    async function add_bg_elements() {
+        const videoExists = await checkFileExists('./resources/mayoiuta.mp4');
+        const audioExists = await checkFileExists('./resources/mayoiuta.mp3');
+
+        if (videoExists) {
+            about_bg_img.insertAdjacentHTML('afterend', about_bg_video);
+            video = document.getElementById('bg-video');
+            
             video.volume = 0.2;
-            audio.style.display = 'none';
 
             // 监听视频加载错误
             video.addEventListener('error', () => {
-                console.warn("Video play failed, fallback to audio.");
-                playAudio();
+                console.warn("视频加载失败，开始加载音频。");
             });
+        } else if (audioExists) {
+            about_bg_img.insertAdjacentHTML('afterend', about_bg_audio);
+            audio = document.getElementById('bg-audio');
 
-            video.play();
-
-        } else {
-            playAudio(); // 视频元素不存在，播放音频
-        }
-    }
-
-    function playAudio() {
-        if (audio) {
             audio.volume = 0.2;
-            audio.style.display = 'block';
-            video.style.display = 'none';
-            audio.addEventListener('error', () => {
-                console.warn("Audio play failed.");
-            });
-            audio.play(); // 本来是想让屏幕滚动控制播放的，结果.play()强制用户进行交互才可以执行，否则报错，只好点击content区域进行播放了
 
+            // 监听音频加载错误
+            audio.addEventListener('error', () => {
+                console.warn("音频加载失败！")
+            })
         } else {
-            console.log('No video or audio element found.');
+            console.warn("视频和音频文件都不存在，无法播放背景视频或音频!");
         }
     }
 
-    const content = document.querySelector('.content');
-    content.addEventListener('click', playVideo);
+    add_bg_elements();
 
+    /* 背景音乐播放 */
+    const content = document.querySelector('.content');
+    content.addEventListener('click', () => {
+        if (video)
+            video.play().catch(err => { console.log('视频播放失败！', err) });
+        else {
+            video.style.display = 'none';
+            if (audio)  { audio.play().catch(err => { console.log('音频播放失败！', err)}) }
+            else        { console.log('No video or audio element found.') };
+        }
+    }); // 本来是想让屏幕滚动控制播放的，结果.play()强制用户进行交互才可以执行，否则报错，只好点击content区域进行播放了
+
+    /* 控制卡片出现和隐藏的功能 */
     const closeBtn = document.getElementById('close-btn');
     const card = document.querySelector('.about-card');
     const downButton = document.querySelector('.down-button');
 
-    closeBtn.addEventListener('click', function() {
+    closeBtn.addEventListener('click', function () {
         card.classList.remove('card-in');
         card.classList.add('card-out');
         downButton.classList.remove('down-button-out');
@@ -53,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     });
 
-    downButton.addEventListener('click', function() {
+    downButton.addEventListener('click', function () {
         card.style.display = 'flex';
         card.classList.remove('card-out');
         card.classList.add('card-in');
