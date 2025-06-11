@@ -65,12 +65,14 @@ function initCarousel(card, index) {
             currentSlide = originalLength; // 跳转到原始的最后一张（无过渡）
             imgContainer.style.transition = 'none';
             imgContainer.style.transform = `translateX(-${currentSlide * imgWidth}px)`;
-            return;
+            imgContainer.clientWidth; // 新做法：浏览器在读取任何几何位置属性时，会触发强制渲染，从而实现浏览器的布局更新
+            currentSlide -= 1;
         } else if (currentSlide === originalLength + 2) { // 滑到数组的最后一张（原始第一张的复制）
             currentSlide = 1; // 跳转到复制的第一张（无过渡）
             imgContainer.style.transition = 'none';
             imgContainer.style.transform = `translateX(-${currentSlide * imgWidth}px)`;
-            return;
+            imgContainer.clientWidth;
+            currentSlide += 1;
         }
 
         // 更新位置
@@ -117,8 +119,6 @@ function initCarousel(card, index) {
     // 初始化自动播放
     autoPlay();
 }
-
-
 function customRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
